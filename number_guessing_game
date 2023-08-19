@@ -1,0 +1,79 @@
+import java.util.Random;
+import java.util.Scanner;
+public class GuessNumber {
+  
+	
+	
+	public static void main(String args[]) {
+		// user have only 6 chances for guessing number.
+		int chance=5;
+		int copy=0;
+        Scanner sc=new Scanner(System.in);
+        int number=randomnumber(1,101);
+        System.out.println(number);
+		System.out.println("What is your Guess.Please Enter your Guesses Number Between 1 and 100.");
+		 for(int i=0;i<=5;i++) {
+			 
+			 Scanner sc2=new Scanner(System.in);
+			 System.out.println("Now it's your Turn");
+			 
+				 int guess=sc2.nextInt();
+				
+				copy=guess;
+				 
+				 
+					 //for user guess correct number
+			 if(guess==number) {
+				System.out.println("Hurrey... you guessed correct number!");
+				//for managing score accordingly how many chances user take to guess correct number. 
+                 if(chance==5) {
+					 System.out.println("your Score is 100/100.");
+				 }
+                 else if(chance==4) {
+					 System.out.println("your Score is 100/90.");
+				 }
+                 else if(chance==3) {
+					 System.out.println("your Score is 100/80.");
+				 }
+                 else if(chance==2) {
+					 System.out.println("your Score is 100/70.");
+				 }
+                 else if(chance==1) {
+					 System.out.println("your Score is 100/60.");
+				 }
+                 else if(chance==0) {
+                	 System.out.println("your Score is 100/50.");
+                 }
+				 //if user guess correct number so no need to iterate again. 
+				 break;
+			 }
+			 if(chance>0) {
+			 if(guess<number) {
+				 System.out.println("Try Again now you have" +" "+chance +" "+"chances left Hint..you guess low number");
+			 }
+			 else if(guess>number) {
+				 System.out.println("Try Again now you have" +" "+chance +" "+"chances left Hint..you guess High number");
+			 }
+			 //here chance have to decrement.
+			 chance--;
+			 }
+			
+			 }
+ if(number!=copy) {
+			 
+			 System.out.println("Game Over!!! {)^_^(} ");
+			 System.out.println();
+			 System.out.print("The answer is"+""+ number);
+			 }
+		
+		 }
+		 
+		
+		 //if user have not guess correct answer even after using all chances.
+		
+		 
+	public static int randomnumber(int min,int max) {
+		Random num=new Random();
+		return num.ints(min,max).findFirst().getAsInt();
+	}
+}
